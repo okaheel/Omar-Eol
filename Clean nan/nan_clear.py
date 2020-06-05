@@ -4,7 +4,7 @@ from numpy import isnan
 from pandas import read_csv
 from sklearn.impute import SimpleImputer
 # load the dataset
-dataset = read_csv('data.csv', header=None)
+dataset = read_csv('pima-indians-diabetes.csv', header=None)
 # mark zero values as missing or NaN
 dataset[[1,2,3,4,5]] = dataset[[1,2,3,4,5]].replace(0, nan)
 # retrieve the numpy array

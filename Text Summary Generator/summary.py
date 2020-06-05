@@ -100,14 +100,14 @@ print ("--LuhnSummarizer--")
 summarizer = LuhnSummarizer() 
 summarizer = LuhnSummarizer(Stemmer(LANGUAGE))
 #replace with terms to remove
-summarizer.stop_words = words3
+summarizer.stop_words = ("I", "am", "the", "you", "are", "me", "is", "than", "that", "this")
 for sentence in summarizer(parser.document, SENTENCES_COUNT):
     print(sentence)
 
 print ("--EdmundsonSummarizer--")     
 summarizer = EdmundsonSummarizer() 
 #replace with terms to remove
-words1 = words3
+words1 = ("economy", "fight", "trade", "china")
 summarizer.bonus_words = words1
 
 #replace with terms to remove
@@ -123,6 +123,6 @@ for sentence in summarizer(parser.document, SENTENCES_COUNT):
 print ("--LexRankSummarizer--")   
 summarizer = LexRankSummarizer()
 summarizer = LexRankSummarizer(Stemmer(LANGUAGE))
-summarizer.stop_words = words3
+summarizer.stop_words = ("I", "am", "the", "you", "are", "me", "is", "than", "that", "this")
 for sentence in summarizer(parser.document, SENTENCES_COUNT):
     print(sentence)
