@@ -26,14 +26,14 @@
     mapboxgl.accessToken = 'pk.eyJ1Ijoib2thaGVlbCIsImEiOiJjazByM2k3d2kwMHQyM2dueW1nandmcDA4In0.InaUtQsieKp3utSMvMcNzw'; // access token
     var map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/okaheel/ck0zrns8s0am61co6fkub3uth', // style url
+      style: 'mapbox://styles/okaheel/ck5zvvdb108vj1inqq7h0bbpt', // style url
       center: [-105.14, 40.02],
       zoom: 10.7
     })
 
     map.on('click', function(e) {
   var features = map.queryRenderedFeatures(e.point, {
-    layers: ['datasets copy'] // layername
+    layers: ['interactive_element'] // layername
   });
 
   if (!features.length) {
@@ -41,12 +41,14 @@
   }
 
   var feature = features[0];
+  var final_text = "https://data.eol.ucar.edu/dataset/".concat(feature.properties.archive_ident);
 
   var popup = new mapboxgl.Popup({ offset: [0, -15] }) //popup 
     .setLngLat(feature.geometry.coordinates)
-    .setHTML('<h3>' + feature.properties.title + '</h3><p>' + feature.properties.summary + '</p>')
+    .setHTML('<h3>' + feature.properties.title + '</h3><p>' + feature.properties.summary + '</p>' + '<a href="' + final_text + '">Find Dataset here</a>')
     .addTo(map);
 });
     </script>
   </body>
 </html>
+
